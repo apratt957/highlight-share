@@ -1,0 +1,25 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "kindle-relay",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-12-11",
+	"observability": {
+		"enabled": true,
+	},
+	"kv_namespaces": [
+		{
+			"binding": "TOKENS",
+			"id": "YOUR_KV_NAMESPACE_ID",
+		},
+	],
+	"env": {
+		"dev": {
+			"kv_namespaces": [
+				{
+					"binding": "TOKENS",
+					"id": "18183bf3173c433abefe2745382b8842",
+				},
+			],
+		},
+	},
+}

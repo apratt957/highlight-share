@@ -1,0 +1,8 @@
+{
+  "name": "highlightshare",
+  "private": true,
+  "workspaces": [
+    "bot",
+    "worker"
+  ]
+}
