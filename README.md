@@ -172,7 +172,7 @@ In your Discord server, run `/token` in any channel the bot has access to. The b
 
 **Enter the token in KOReader**
 
-Go to the KOReader menu → **Highlight Share Token**, enter the token from Discord, and tap Save.
+Go to the KOReader menu → Tools → **Highlight Share Token**, enter the token from Discord, and tap Save.
 
 ---
 
