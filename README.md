@@ -19,6 +19,47 @@ KOReader plugin  →  Cloudflare Worker  →  Discord bot  →  Discord channel
 
 There are three components to set up: the Discord bot, the Cloudflare Worker, and the KOReader plugin.
 
+### Automated setup (recommended)
+
+A setup script handles the Worker deployment and bot configuration automatically.
+
+**Prerequisites**
+
+- [Node.js](https://nodejs.org)
+- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/): `npm install -g wrangler`
+- A [Cloudflare account](https://cloudflare.com)
+
+**Before running the script**, create your Discord bot at [discord.com/developers](https://discord.com/developers/applications) and have ready:
+
+- Your bot token (Bot → Token)
+- Your client ID (OAuth2 → Client ID)
+- Your Discord server ID (right-click server → Copy Server ID)
+- Your bot invited to your server with `applications.commands` and `bot` scopes
+
+Then run:
+
+```bash
+bash setup.sh
+```
+
+The script will log into Cloudflare if needed, create the KV namespace, deploy the worker, set secrets, and write `bot/.env` — then print next steps when done.
+
+**After the script completes**, start the bot:
+
+```bash
+cd bot && node bot.js
+```
+
+For persistent hosting, run the bot on a VPS or always-on machine using `pm2` or a systemd service.
+
+Then continue to [KOReader plugin setup](#3-koreader-plugin) below.
+
+---
+
+### Manual setup
+
+<br>
+
 ### 1. Discord bot
 
 **Create the bot**
@@ -58,7 +99,7 @@ For persistent hosting, run this on a VPS or any always-on machine using somethi
 
 ---
 
-### 2. Cloudflare Worker
+### 2. Cloudflare Worker <a name="2-cloudflare-worker"></a>
 
 **Prerequisites:** A [Cloudflare account](https://cloudflare.com) and [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) installed.
 
@@ -107,7 +148,7 @@ This uses the `dev` KV namespace defined in `wrangler.jsonc` so your production 
 
 ---
 
-### 3. KOReader plugin
+### 3. KOReader plugin <a name="3-koreader-plugin"></a>
 
 **If you're self-hosting the worker**, update the URL at the top of `highlightshare.koplugin/main.lua`:
 
